@@ -1,0 +1,32 @@
+name: lns_service_cost_calculator
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  #Firebase
+  firebase_auth: ^3.0.1
+  firebase_core: ^1.4.0
+
+  #state management
+  provider: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/

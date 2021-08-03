@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "437850465895",
+    "project_id": "lns-service-cost-calculator",
+    "storage_bucket": "lns-service-cost-calculator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437850465895:android:d8e3a0aa3b5037e455d6c2",
+        "android_client_info": {
+          "package_name": "com.example.lns_service_cost_calculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437850465895-uiok7p4d788i5i4qqttoe5jk5mthsa09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkhLMKaU1nMievQG8rTVYaC0Dq1XLWvkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437850465895-uiok7p4d788i5i4qqttoe5jk5mthsa09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
