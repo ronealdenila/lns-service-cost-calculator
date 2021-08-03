@@ -22,7 +22,7 @@ Category Option Example Screen
 
 Computation Result Example Screen
 
-![image](https://user-images.githubusercontent.com/36373505/127991684-b6666bbf-8382-4fc8-8b2d-59c23cc2bc57.png)
+![image](https://user-images.githubusercontent.com/36373505/127996553-37b98055-5579-439b-8ed5-9a8c458919fb.png)
 
 
 ## Designs are subject to change. This is just a conceptual design to demonstrate the project's flow.
