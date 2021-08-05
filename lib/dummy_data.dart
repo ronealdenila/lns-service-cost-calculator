@@ -1,6 +1,6 @@
 import 'package:lns_service_cost_calculator/providers/service.dart';
 
-final dummyData = [
+List<Service> dummyData = [
   Service(
     id: 's1',
     title: 'Digital Marketing & Consultation',
