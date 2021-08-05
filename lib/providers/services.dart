@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lns_service_cost_calculator/providers/service.dart';
+import 'service.dart';
 
 class Services with ChangeNotifier {
   List<Service> _items = [

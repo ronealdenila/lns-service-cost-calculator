@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/providers/service.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_category_screen.dart';
-import 'package:lns_service_cost_calculator/shared/styles.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/service.dart';
+import '../screens/mobile_app_screens/type_of_app_screen.dart';
 
 class ServiceTypeItem extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class ServiceTypeItem extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
-              MobileAppCategoryScreen.routeName,
+              TypeofAppScreen.routeName,
               arguments: serviceType.id,
             );
           },

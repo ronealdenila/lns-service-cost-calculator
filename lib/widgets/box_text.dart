@@ -27,7 +27,7 @@ class BoxText extends StatelessWidget {
         alignment = align;
 
   BoxText.body(this.text,
-      {Color color = kcMediumGreyColor, TextAlign align = TextAlign.start})
+      {Color color = Colors.black, TextAlign align = TextAlign.start})
       : style = bodyStyle.copyWith(color: color),
         alignment = align;
 

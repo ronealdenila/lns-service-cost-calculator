@@ -14,7 +14,6 @@ class ServiceTypeScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Select Type of Service'),
-          backgroundColor: kcPrimaryColor,
           // actions: [
           //   IconButton(icon: Icon(Icons.logout), onPressed: appState.signOut)
           // ],

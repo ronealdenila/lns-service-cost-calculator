@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
+import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 
 import './providers/auth.dart';
 import './providers/services.dart';
@@ -12,7 +13,7 @@ import 'package:provider/provider.dart';
 import './screens/service_type_screen.dart';
 import './screens/splash_screen.dart';
 import './screens/on_boarding_screen.dart';
-import 'screens/mobile_app_category_screen.dart';
+import 'screens/mobile_app_screens/type_of_app_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          appBarTheme: AppBarTheme(backgroundColor: kcPrimaryColor),
         ),
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
@@ -51,7 +53,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           ServiceTypeScreen.routeName: (ctx) => ServiceTypeScreen(),
-          MobileAppCategoryScreen.routeName: (ctx) => MobileAppCategoryScreen(),
+          TypeofAppScreen.routeName: (ctx) => TypeofAppScreen(),
+          AppCategoryScreen.routeName: (ctx) => AppCategoryScreen(),
         },
       ),
     );
