@@ -89,6 +89,7 @@ class _TypeofAppScreenState extends State<TypeofAppScreen> {
                 BoxText.body(
                   'What type of app are you building?',
                   align: TextAlign.center,
+                  color: Colors.blu,
                 ),
                 Form(
                   key: _form,
