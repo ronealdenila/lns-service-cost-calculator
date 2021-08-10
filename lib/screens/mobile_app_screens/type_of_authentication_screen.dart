@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/constants/app_strings.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/features_screen.dart';
-import 'package:lns_service_cost_calculator/widgets/mobile_application_canvas_option.dart';
+
+import '/constants/app_strings.dart';
+
+import '/screens/mobile_app_screens/features_screen.dart';
+
+import '/widgets/mobile_application_canvas_option.dart';
 
 class TypeOfAuthenticationScreen extends StatelessWidget {
   static const routeName = '/type-of-authentication-option';
@@ -44,11 +47,7 @@ class TypeOfAuthenticationScreen extends StatelessWidget {
         onMainButtonTapped: () {
           Navigator.of(context).pushNamed(FeaturesScreen.routeName);
         },
-        isSelected: isSelected,
-        details: details,
-        iconList: iconList,
       ),
     );
-    ;
   }
 }

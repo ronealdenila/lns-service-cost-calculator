@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/constants/app_strings.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
-import 'package:lns_service_cost_calculator/shared/app_colors.dart';
-import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
-import 'package:lns_service_cost_calculator/widgets/box_button.dart';
-
-import 'package:lns_service_cost_calculator/widgets/box_text.dart';
-
 import 'package:provider/provider.dart';
 
-import '../../providers/services.dart';
+import '/screens/mobile_app_screens/app_category_screen.dart';
+
+import '/shared/app_colors.dart';
+import '/shared/ui_helpers.dart';
+
+import '/constants/app_strings.dart';
+
+import '/widgets/box_button.dart';
+import '/widgets/box_text.dart';
+
+import '/providers/services.dart';
 
 class TypeOfAppScreen extends StatefulWidget {
   static const routeName = '/type-of-screen-option';
@@ -46,7 +48,6 @@ class _TypeOfAppScreenState extends State<TypeOfAppScreen> {
         ),
       );
     } else {
-      //TODO: Put in on global state so that it will be editable on the last page
       Navigator.of(context).pushNamed(AppCategoryScreen.routeName);
     }
   }

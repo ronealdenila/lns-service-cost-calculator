@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:lns_service_cost_calculator/shared/app_colors.dart';
-import 'package:lns_service_cost_calculator/widgets/service_type_grid.dart';
+import '/widgets/service_type_grid.dart';
 
 class ServiceTypeScreen extends StatelessWidget {
   static const routeName = '/service-type-screen';

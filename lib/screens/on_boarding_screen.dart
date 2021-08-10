@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/constants/app_strings.dart';
-import 'package:lns_service_cost_calculator/providers/auth.dart';
-import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
-import 'package:lns_service_cost_calculator/widgets/box_button.dart';
-import 'package:lns_service_cost_calculator/widgets/box_text.dart';
+
+import '/constants/app_strings.dart';
+import '/providers/auth.dart';
+import '/shared/ui_helpers.dart';
+
+import '/widgets/box_button.dart';
+import '/widgets/box_text.dart';
 
 import 'package:provider/provider.dart';
 

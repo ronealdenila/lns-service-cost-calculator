@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/shared/styles.dart';
 
 class BoxText extends StatelessWidget {

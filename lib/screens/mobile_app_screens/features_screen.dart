@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/widgets/mobile_application_canvas_option.dart';
 
 class FeaturesScreen extends StatelessWidget {
   static const routeName = '/features-option';
@@ -14,6 +13,9 @@ class FeaturesScreen extends StatelessWidget {
         leading: CupertinoNavigationBarBackButton(
           color: Colors.black,
         ),
+      ),
+      body: Center(
+        child: Text('Features Screen'),
       ),
     );
   }

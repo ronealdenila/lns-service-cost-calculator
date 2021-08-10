@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/features_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/number_of_display_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/type_of_authentication_screen.dart';
-import 'package:lns_service_cost_calculator/shared/app_colors.dart';
+import '/shared/app_colors.dart';
 
+import '/providers/categories.dart';
+import '/providers/displayScreens.dart';
 import './providers/auth.dart';
 import './providers/services.dart';
 
 import 'package:provider/provider.dart';
 
-import './screens/service_type_screen.dart';
-import './screens/splash_screen.dart';
-import './screens/on_boarding_screen.dart';
-import 'screens/mobile_app_screens/type_of_app_screen.dart';
+import '/screens/mobile_app_screens/app_category_screen.dart';
+import '/screens/mobile_app_screens/features_screen.dart';
+import '/screens/mobile_app_screens/number_of_display_screen.dart';
+import '/screens/mobile_app_screens/type_of_authentication_screen.dart';
+import '/screens/service_type_screen.dart';
+import '/screens/splash_screen.dart';
+import '/screens/on_boarding_screen.dart';
+import '/screens/mobile_app_screens/type_of_app_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +36,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (ctx) => Services(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => Categories(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => DisplayScreens(),
         ),
       ],
       child: MaterialApp(

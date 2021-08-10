@@ -25,3 +25,13 @@ class ServiceTypeGrid extends StatelessWidget {
     );
   }
 }
+
+      //           //     for (int indexBtn = 0;
+      //           //         indexBtn < widget.isSelected!.length;
+      //           //         indexBtn++) {
+      //           //       if (indexBtn == index) {
+      //           //         widget.isSelected![indexBtn] = true;
+      //           //         // print('Category ${details[indexBtn]} is selected');
+      //           //       } else {
+      //           //         widget.isSelected![indexBtn] = false;
+      //           //       }
