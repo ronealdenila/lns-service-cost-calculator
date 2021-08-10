@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/number_of_display_screen.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
 import 'package:lns_service_cost_calculator/widgets/box_button.dart';
@@ -37,8 +38,6 @@ class _AppCategoryScreenState extends State<AppCategoryScreen> {
     'EDUCATION AND E-LEARNING APP',
     'BANK APP',
   ];
-
-  void _saveAppCategory() {}
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +121,13 @@ class _AppCategoryScreenState extends State<AppCategoryScreen> {
                 ),
               ],
             ),
-            BoxButton(title: 'Next', onTap: _saveAppCategory),
+            BoxButton(
+              title: 'Next',
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed(NumberOfDisplayScreen.routeName);
+              },
+            ),
           ],
         ),
       ),

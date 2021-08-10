@@ -11,14 +11,14 @@ import 'package:provider/provider.dart';
 
 import '../../providers/services.dart';
 
-class TypeofAppScreen extends StatefulWidget {
+class TypeOfAppScreen extends StatefulWidget {
   static const routeName = '/type-of-screen-option';
 
   @override
-  _TypeofAppScreenState createState() => _TypeofAppScreenState();
+  _TypeOfAppScreenState createState() => _TypeOfAppScreenState();
 }
 
-class _TypeofAppScreenState extends State<TypeofAppScreen> {
+class _TypeOfAppScreenState extends State<TypeOfAppScreen> {
   var _androidOption;
   var _iOSOption;
 
@@ -46,7 +46,7 @@ class _TypeofAppScreenState extends State<TypeofAppScreen> {
         ),
       );
     } else {
-      //TODO: Put in on global state so that it will be editiable on the last page
+      //TODO: Put in on global state so that it will be editable on the last page
       Navigator.of(context).pushNamed(AppCategoryScreen.routeName);
     }
   }

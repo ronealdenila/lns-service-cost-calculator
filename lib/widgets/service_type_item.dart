@@ -14,7 +14,7 @@ class ServiceTypeItem extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
-              TypeofAppScreen.routeName,
+              TypeOfAppScreen.routeName,
               arguments: serviceType.id,
             );
           },
