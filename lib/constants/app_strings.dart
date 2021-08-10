@@ -4,3 +4,5 @@ const String OnBoardingScreenDescription =
 const String TypeOfServiceOptionTitle = 'Before we get started select what type of service would you like us to compute';
 
 const String MobileAppCategoryDescription = 'Choose the items that best define your app and the functionality you need from the list provided';
+
+const String NumberOfDisplayScreenTitle = 'Home many screens do you envision for your app?';
