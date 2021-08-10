@@ -22,5 +22,4 @@ class Auth with ChangeNotifier {
   Future<User?> getUser({required String userId}) async {
     print('The user that is canvassing is $userId');
   }
-  
 }
