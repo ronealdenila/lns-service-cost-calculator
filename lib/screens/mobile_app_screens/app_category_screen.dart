@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
-import 'package:lns_service_cost_calculator/widgets/app_category_item.dart';
 import 'package:lns_service_cost_calculator/widgets/box_button.dart';
 import 'package:lns_service_cost_calculator/widgets/box_text.dart';
 
@@ -13,6 +12,34 @@ class AppCategoryScreen extends StatefulWidget {
 }
 
 class _AppCategoryScreenState extends State<AppCategoryScreen> {
+  // must be stored globally since pag rebuild ani will returned in false
+  List<bool> isSelected = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+  List<IconData> iconList = [
+    Icons.construction,
+    Icons.airplanemode_on_outlined,
+    Icons.people,
+    Icons.shopping_cart,
+    Icons.book,
+    Icons.tune,
+  ];
+  List<String> details = [
+    'SERVICE APP',
+    'BOOKING APP',
+    'SOCAL NETWORKING APP',
+    'E-COMMERCE APP',
+    'EDUCATION AND E-LEARNING APP',
+    'BANK APP',
+  ];
+
+  void _saveAppCategory() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,38 +63,66 @@ class _AppCategoryScreenState extends State<AppCategoryScreen> {
                 verticalSpaceRegular,
                 GridView.count(
                   crossAxisCount: 3,
-                  children: [
-                    //TODO: Make a model instead of hard coded data
-                    AppCategoryItem(
-                      title: 'SERVICE APP',
-                      icon: Icons.construction,
-                    ),
-                    AppCategoryItem(
-                      title: 'BOOKING APP',
-                      icon: Icons.airplanemode_on_outlined,
-                    ),
-                    AppCategoryItem(
-                      title: 'SOCIAL NETWORKING APP',
-                      icon: Icons.people,
-                    ),
-                    AppCategoryItem(
-                      title: 'E-COMMERCE APP',
-                      icon: Icons.shopping_cart,
-                    ),
-                    AppCategoryItem(
-                      title: 'EDUCATION AND E-LEARNING APP',
-                      icon: Icons.book,
-                    ),
-                    AppCategoryItem(
-                      title: 'BANK APP',
-                      icon: Icons.comment_bank,
-                    ),
-                  ],
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  // childAspectRatio: 1,
+                  children: List.generate(
+                    isSelected.length,
+                    (index) {
+                      return InkWell(
+                        // splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          setState(() {
+                            for (int indexBtn = 0;
+                                indexBtn < isSelected.length;
+                                indexBtn++) {
+                              if (indexBtn == index) {
+                                isSelected[indexBtn] = true;
+                                print(
+                                    'Category ${details[indexBtn]} is selected');
+                              } else {
+                                isSelected[indexBtn] = false;
+                              }
+                            }
+                          });
+                        },
+                        //TODO: Enhance card design
+                        child: Card(
+                          color:
+                              //set the background color of the button when it is selected/ not selected
+                              isSelected[index]
+                                  ? Color(0xff065C0D)
+                                  : Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(iconList[index],
+                                  //set the color of the icon when it is selected/ not selected
+                                  color: isSelected[index]
+                                      ? Colors.white
+                                      : Colors.black),
+                              verticalSpaceRegular,
+                              Text(
+                                details[index],
+                                style: TextStyle(
+                                    color: isSelected[index]
+                                        ? Colors.white
+                                        : Colors.black),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                   shrinkWrap: true,
                 ),
               ],
             ),
-            BoxButton(title: 'Next'),
+            BoxButton(title: 'Next', onTap: _saveAppCategory),
           ],
         ),
       ),
