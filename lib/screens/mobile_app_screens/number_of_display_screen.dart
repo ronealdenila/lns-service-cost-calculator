@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lns_service_cost_calculator/constants/app_strings.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/type_of_authentication_screen.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/widgets/mobile_application_canvas_option.dart';
 
 class NumberOfDisplayScreen extends StatelessWidget {
   static const routeName = '/number-of-display-option';
-
-  const NumberOfDisplayScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +50,9 @@ class NumberOfDisplayScreen extends StatelessWidget {
         title: NumberOfDisplayScreenTitle,
         subtitle: '(select any one option)',
         mainButtonTitle: 'Next',
-        onMainButtonTapped: () {},
+        onMainButtonTapped: () {
+          Navigator.of(context).pushNamed(TypeOfAuthenticationScreen.routeName);
+        },
         isSelected: isSelected,
         details: details,
         iconList: iconList,

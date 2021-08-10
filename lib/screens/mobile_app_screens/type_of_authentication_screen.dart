@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/number_of_display_screen.dart';
+import 'package:lns_service_cost_calculator/constants/app_strings.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/features_screen.dart';
 import 'package:lns_service_cost_calculator/widgets/mobile_application_canvas_option.dart';
 
-class AppCategoryScreen extends StatelessWidget {
-  static const routeName = '/app-category-screen-option';
+class TypeOfAuthenticationScreen extends StatelessWidget {
+  static const routeName = '/type-of-authentication-option';
 
   // must be stored globally since pag rebuild ani will returned in false
   final List<bool> isSelected = [
@@ -12,24 +13,18 @@ class AppCategoryScreen extends StatelessWidget {
     false,
     false,
     false,
-    false,
-    false,
   ];
   final List<IconData> iconList = [
-    Icons.construction,
-    Icons.airplanemode_on_outlined,
-    Icons.people,
-    Icons.shopping_cart,
-    Icons.book,
-    Icons.account_balance,
+    Icons.email,
+    Icons.groups,
+    Icons.phonelink_setup,
+    Icons.person_add_disabled,
   ];
   final List<String> details = [
-    'SERVICE APP',
-    'BOOKING APP',
-    'SOCAL NETWORKING APP',
-    'E-COMMERCE APP',
-    'EDUCATION AND E-LEARNING APP',
-    'BANK APP',
+    'EMAIL',
+    'SOCIAL MEDIA',
+    'PHONE OTP',
+    'USERS ARE NOT REQUIRED TO AUTHENTICATE',
   ];
 
   @override
@@ -43,16 +38,17 @@ class AppCategoryScreen extends StatelessWidget {
         ),
       ),
       body: MobileApplicationCanvasOption(
-        title: 'Which category best describes your App?',
-        subtitle: '(select any one option)',
+        title: TypeOfAuthenticationTitle,
+        subtitle: '(select atleast one option)',
         mainButtonTitle: 'Next',
         onMainButtonTapped: () {
-          Navigator.of(context).pushNamed(NumberOfDisplayScreen.routeName);
+          Navigator.of(context).pushNamed(FeaturesScreen.routeName);
         },
         isSelected: isSelected,
         details: details,
         iconList: iconList,
       ),
     );
+    ;
   }
 }

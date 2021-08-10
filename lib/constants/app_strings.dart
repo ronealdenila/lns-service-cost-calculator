@@ -6,3 +6,5 @@ const String TypeOfServiceOptionTitle = 'Before we get started select what type 
 const String MobileAppCategoryDescription = 'Choose the items that best define your app and the functionality you need from the list provided';
 
 const String NumberOfDisplayScreenTitle = 'Home many screens do you envision for your app?';
+
+const String TypeOfAuthenticationTitle = 'How would you like your user to register/login to your App?';

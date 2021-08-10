@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/features_screen.dart';
 import 'package:lns_service_cost_calculator/screens/mobile_app_screens/number_of_display_screen.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/type_of_authentication_screen.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 
 import './providers/auth.dart';
@@ -58,6 +60,9 @@ class MyApp extends StatelessWidget {
           TypeOfAppScreen.routeName: (ctx) => TypeOfAppScreen(),
           AppCategoryScreen.routeName: (ctx) => AppCategoryScreen(),
           NumberOfDisplayScreen.routeName: (ctx) => NumberOfDisplayScreen(),
+          TypeOfAuthenticationScreen.routeName: (ctx) =>
+              TypeOfAuthenticationScreen(),
+          FeaturesScreen.routeName: (ctx) => FeaturesScreen(),
         },
       ),
     );

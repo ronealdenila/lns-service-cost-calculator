@@ -124,13 +124,12 @@ class _CardItemState extends State<CardItem> {
                             ? Colors.white
                             : Colors.black),
                     verticalSpaceRegular,
-                    Text(
+                    BoxText.caption(
                       widget.details![index],
-                      style: TextStyle(
-                          color: widget.isSelected![index]
-                              ? Colors.white
-                              : Colors.black),
-                      textAlign: TextAlign.center,
+                      color: widget.isSelected![index]
+                          ? Colors.white
+                          : Colors.black,
+                      align: TextAlign.center,
                     ),
                   ],
                 ),
