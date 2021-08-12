@@ -1,109 +1,237 @@
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/providers/category.dart';
-import 'package:lns_service_cost_calculator/providers/service.dart';
+import 'package:lns_service_cost_calculator/providers/lns_api.dart';
 
-List<Service> serviceDummyData = [
-  Service(
+final appDummyData = [
+  ServiceTypeModel(
     id: 's1',
-    title: 'Digital Marketing & Consultation',
-    image: 'assets/images/digital_marketing_consultation.jpg',
-  ),
-  Service(
-    id: 's2',
-    title: 'Customized System Development',
-    image: 'assets/images/system_development.jpg',
-  ),
-  Service(
-    id: 's3',
-    title: 'Mobile Application Development',
-    image: 'assets/images/mobile_app_development.jpg',
-  ),
-  Service(
-    id: 's4',
-    title: 'Domain Name and Web Hosting',
-    image: 'assets/images/web_hosting.jpg',
-  ),
-  Service(
-    id: 's5',
-    title: 'E-Commerce Store Development',
-    image: 'assets/images/e_commerce_store_development.jpg',
-  ),
-];
-
-List<Category> categoryDummyData = [
-  Category(
-    id: 'c1',
-    title: 'SERVICE APP',
-    price: 100,
-    icon: Icons.construction,
-  ),
-  Category(
-    id: 'c2',
-    title: 'BOOKING APP',
+    icon: Icons.mobile_friendly,
+    title: 'DIGITAL MARKETING & CONSULTATION',
+    description: 'None',
     price: 200,
-    icon: Icons.airplanemode_on_outlined,
+    appType: [
+      ServiceTypeSubModel(
+        title: 'Android App',
+        description: 'Mobile App Efforts',
+        icon: Icons.android,
+      ),
+      ServiceTypeSubModel(
+        title: 'iOS App',
+        description: 'iOS App Effort',
+        icon: Icons.ios_share,
+      ),
+      ServiceTypeSubModel(
+        title: 'All of the above',
+        description: 'Multi-platform Efforts',
+        icon: Icons.flutter_dash,
+      ),
+    ],
+    appCategory: [
+      ServiceTypeSubModel(
+        title: 'Service app',
+        description: 'Service app description',
+        icon: Icons.construction,
+      ),
+      ServiceTypeSubModel(
+        title: 'Booking App',
+        description: 'Booking app description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+    ],
   ),
-  Category(
-    id: 'c3',
-    title: 'SOCIAL NETWORKING APP',
-    price: 300,
-    icon: Icons.people,
+  ServiceTypeModel(
+    id: 's2',
+    icon: Icons.mobile_friendly,
+    title: 'CUSTOMIZED SYSTEM DEVELOPMENT',
+    description: 'None',
+    price: 200,
+    appType: [
+      ServiceTypeSubModel(
+        title: 'Android App',
+        description: 'Mobile App Efforts',
+        icon: Icons.android,
+      ),
+      ServiceTypeSubModel(
+        title: 'iOS App',
+        description: 'iOS App Effort',
+        icon: Icons.ios_share,
+      ),
+      ServiceTypeSubModel(
+        title: 'All of the above',
+        description: 'Multi-platform Efforts',
+        icon: Icons.flutter_dash,
+      ),
+    ],
+    appCategory: [
+      ServiceTypeSubModel(
+        title: 'Service app',
+        description: 'Service app description',
+        icon: Icons.construction,
+      ),
+      ServiceTypeSubModel(
+        title: 'Booking App',
+        description: 'Booking app description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+    ],
   ),
-  Category(
-    id: 'c4',
-    title: 'E-COMMERCE APP',
-    price: 300,
-    icon: Icons.shopping_cart,
+  ServiceTypeModel(
+    id: 's3',
+    icon: Icons.mobile_friendly,
+    title: 'MOBILE APPLICATION DEVELOPMENT',
+    description: 'None',
+    price: 200,
+    appType: [
+      ServiceTypeSubModel(
+        title: 'Android App',
+        description: 'Mobile App Efforts',
+        icon: Icons.android,
+      ),
+      ServiceTypeSubModel(
+        title: 'iOS App',
+        description: 'iOS App Effort',
+        icon: Icons.ios_share,
+      ),
+      ServiceTypeSubModel(
+        title: 'All of the above',
+        description: 'Multi-platform Efforts',
+        icon: Icons.flutter_dash,
+      ),
+    ],
+    appCategory: [
+      ServiceTypeSubModel(
+        title: 'SERVICE APP',
+        description: 'Service app description',
+        icon: Icons.construction,
+      ),
+      ServiceTypeSubModel(
+        title: 'BOOKING APP',
+        description: 'Booking app description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+      ServiceTypeSubModel(
+        title: 'SOCIAL NETWORKING APP',
+        description: 'social networking description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+      ServiceTypeSubModel(
+        title: 'E-COMMERCE APP',
+        description: 'e-commerce description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+      ServiceTypeSubModel(
+        title: 'EDUCATION AND E-LEARNING APP',
+        description: 'education and e-learning description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+      ServiceTypeSubModel(
+        title: 'BANK APP',
+        description: 'Bank app description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+    ],
+    appScreen: [
+      DisplayScreenModel(
+        title: '5 SCREENS',
+        description: '5 DAYS',
+        icon: Icons.file_copy,
+      ),
+      DisplayScreenModel(
+        title: '6-10 screens',
+        description: '10 DAYS',
+        icon: Icons.file_copy,
+      ),
+      DisplayScreenModel(
+        title: '11-15',
+        description: '15 DAYS',
+        icon: Icons.file_copy,
+      ),
+      DisplayScreenModel(
+        title: '16-20 SCREENS',
+        description: '20 DAYSn',
+        icon: Icons.file_copy,
+      ),
+      DisplayScreenModel(
+        title: '21-25 SCREENS',
+        description: '25 DAYS',
+        icon: Icons.file_copy,
+      ),
+      DisplayScreenModel(
+        title: 'ABOVE 25 SCREENS',
+        description: '30 DAYS +',
+        icon: Icons.file_copy,
+      ),
+    ],
   ),
-  Category(
-    id: 'c5',
-    title: 'EDUCATION AND E-LEARNING APP',
-    price: 300,
-    icon: Icons.book,
+  ServiceTypeModel(
+    id: 's4',
+    icon: Icons.mobile_friendly,
+    title: 'DOMAIN NAME AND WEB HOSTING',
+    description: 'None',
+    price: 200,
+    appType: [
+      ServiceTypeSubModel(
+        title: 'Android App',
+        description: 'Mobile App Efforts',
+        icon: Icons.android,
+      ),
+      ServiceTypeSubModel(
+        title: 'iOS App',
+        description: 'iOS App Effort',
+        icon: Icons.ios_share,
+      ),
+      ServiceTypeSubModel(
+        title: 'All of the above',
+        description: 'Multi-platform Efforts',
+        icon: Icons.flutter_dash,
+      ),
+    ],
+    appCategory: [
+      ServiceTypeSubModel(
+        title: 'Service app',
+        description: 'Service app description',
+        icon: Icons.construction,
+      ),
+      ServiceTypeSubModel(
+        title: 'Booking App',
+        description: 'Booking app description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+    ],
   ),
-  Category(
-    id: 'c6',
-    title: 'BANK APP',
-    price: 300,
-    icon: Icons.account_balance,
-  ),
-];
-
-List<Category> screensOptionDummyData = [
-  Category(
-    id: 'a1',
-    title: '5 SCREENS',
-    price: 100,
-    icon: Icons.file_copy,
-  ),
-  Category(
-    id: 'a2',
-    title: '6-10 SCREENS',
-    price: 100,
-    icon: Icons.file_copy,
-  ),
-  Category(
-    id: 'a3',
-    title: '11-15 SCREENS',
-    price: 100,
-    icon: Icons.file_copy,
-  ),
-  Category(
-    id: 'a4',
-    title: '16-20 SCREENS',
-    price: 100,
-    icon: Icons.file_copy,
-  ),
-  Category(
-    id: 'a5',
-    title: '21-25 SCREENS',
-    price: 100,
-    icon: Icons.file_copy,
-  ),
-  Category(
-    id: 'a6',
-    title: 'ABOVE 25 SCREENS',
-    price: 100,
-    icon: Icons.file_copy,
+  ServiceTypeModel(
+    id: 's5',
+    icon: Icons.mobile_friendly,
+    title: 'E-COMMERCE STORE DEVELOPMENT',
+    description: 'None',
+    price: 200,
+    appType: [
+      ServiceTypeSubModel(
+        title: 'Android App',
+        description: 'Mobile App Efforts',
+        icon: Icons.android,
+      ),
+      ServiceTypeSubModel(
+        title: 'iOS App',
+        description: 'iOS App Effort',
+        icon: Icons.ios_share,
+      ),
+      ServiceTypeSubModel(
+        title: 'All of the above',
+        description: 'Multi-platform Efforts',
+        icon: Icons.flutter_dash,
+      ),
+    ],
+    appCategory: [
+      ServiceTypeSubModel(
+        title: 'Service app',
+        description: 'Service app description',
+        icon: Icons.construction,
+      ),
+      ServiceTypeSubModel(
+        title: 'Booking App',
+        description: 'Booking app description',
+        icon: Icons.airplanemode_on_outlined,
+      ),
+    ],
   ),
 ];

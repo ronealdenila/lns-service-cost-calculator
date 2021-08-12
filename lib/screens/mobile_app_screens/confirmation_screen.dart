@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FeaturesScreen extends StatelessWidget {
-  static const routeName = '/features-option';
+class ConfirmationScreen extends StatelessWidget {
+  static const routeName = 'confirmation-option';
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,7 @@ class FeaturesScreen extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      body: Center(
-        child: Text('Features Screen'),
-      ),
+      body: Text('Almost There!'),
     );
   }
 }

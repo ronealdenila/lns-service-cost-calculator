@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '/shared/app_colors.dart';
+import 'package:lns_service_cost_calculator/providers/lns_api.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/display_number_screen.dart';
 
-import '/providers/categories.dart';
-import '/providers/displayScreens.dart';
 import './providers/auth.dart';
-import './providers/services.dart';
 
 import 'package:provider/provider.dart';
 
+import '/screens/mobile_app_screens/confirmation_screen.dart';
 import '/screens/mobile_app_screens/app_category_screen.dart';
 import '/screens/mobile_app_screens/features_screen.dart';
-import '/screens/mobile_app_screens/number_of_display_screen.dart';
-import '/screens/mobile_app_screens/type_of_authentication_screen.dart';
+
 import '/screens/service_type_screen.dart';
 import '/screens/splash_screen.dart';
 import '/screens/on_boarding_screen.dart';
@@ -35,21 +33,25 @@ class MyApp extends StatelessWidget {
           value: Auth(),
         ),
         ChangeNotifierProvider(
-          create: (ctx) => Services(),
+          create: (ctx) => AppProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (ctx) => Categories(),
-        ),
-        ChangeNotifierProvider(
-          create: (ctx) => DisplayScreens(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (ctx) => Categories(),
+        // ),
+        // ChangeNotifierProvider(
+        //   create: (ctx) => DisplayScreens(),
+        // ),
+        // ChangeNotifierProvider(
+        //   create: (ctx) => TypeOfApp(),
+        // ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
-          appBarTheme: AppBarTheme(backgroundColor: kcPrimaryColor),
+          appBarTheme:
+              AppBarTheme(backgroundColor: Colors.transparent, elevation: 0),
         ),
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
@@ -67,10 +69,9 @@ class MyApp extends StatelessWidget {
           ServiceTypeScreen.routeName: (ctx) => ServiceTypeScreen(),
           TypeOfAppScreen.routeName: (ctx) => TypeOfAppScreen(),
           AppCategoryScreen.routeName: (ctx) => AppCategoryScreen(),
-          NumberOfDisplayScreen.routeName: (ctx) => NumberOfDisplayScreen(),
-          TypeOfAuthenticationScreen.routeName: (ctx) =>
-              TypeOfAuthenticationScreen(),
+          DisplayNumberScreen.routeName: (ctx) => DisplayNumberScreen(),
           FeaturesScreen.routeName: (ctx) => FeaturesScreen(),
+          ConfirmationScreen.routeName: (ctx) => ConfirmationScreen(),
         },
       ),
     );

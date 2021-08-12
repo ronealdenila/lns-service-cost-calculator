@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
 import 'package:provider/provider.dart';
 
-import '/screens/mobile_app_screens/app_category_screen.dart';
+import '/providers/lns_api.dart';
 
-import '/shared/app_colors.dart';
 import '/shared/ui_helpers.dart';
 
 import '/constants/app_strings.dart';
@@ -11,54 +12,48 @@ import '/constants/app_strings.dart';
 import '/widgets/box_button.dart';
 import '/widgets/box_text.dart';
 
-import '/providers/services.dart';
-
-class TypeOfAppScreen extends StatefulWidget {
-  static const routeName = '/type-of-screen-option';
-
-  @override
-  _TypeOfAppScreenState createState() => _TypeOfAppScreenState();
-}
-
-class _TypeOfAppScreenState extends State<TypeOfAppScreen> {
-  var _androidOption;
-  var _iOSOption;
+class TypeOfAppScreen extends StatelessWidget {
+  static const routeName = '/type-of-app-option';
 
   final _form = GlobalKey<FormState>();
-  final PageController controller = PageController(initialPage: 0);
 
-  Future<void> _saveTypeofApp() async {
-    _form.currentState!.save();
-    print(_androidOption);
-    print(_iOSOption);
-    if (_androidOption == false && _iOSOption == false) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: Text('An error Occured'),
-          content: Text('Please Choose atleast on of type of app.'),
-          actions: [
-            TextButton(
-              child: Text('Okay'),
-              onPressed: () {
-                Navigator.of(ctx).pop();
-              },
-            )
-          ],
-        ),
-      );
-    } else {
-      Navigator.of(context).pushNamed(AppCategoryScreen.routeName);
-    }
-  }
+  // Future<void> _saveTypeofApp() async {
+  //   _form.currentState!.save();
+  //   print(_androidOption);
+  //   print(_iOSOption);
+  //   if (_androidOption == false && _iOSOption == false) {
+  //     showDialog(
+  //       context: context,
+  //       builder: (ctx) => AlertDialog(
+  //         title: Text('An error Occured'),
+  //         content: Text('Please Choose atleast on of type of app.'),
+  //         actions: [
+  //           TextButton(
+  //             child: Text('Okay'),
+  //             onPressed: () {
+  //               Navigator.of(ctx).pop();
+  //             },
+  //           )
+  //         ],
+  //       ),
+  //     );
+  //   } else {
+  //     Navigator.of(context).pushNamed(AppCategoryScreen.routeName);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     final serviceTypeId = ModalRoute.of(context)!.settings.arguments as String;
-    final loadedServiceType = context.read<Services>().findById(serviceTypeId);
+    final loadedServiceType =
+        context.read<AppProvider>().findById(serviceTypeId);
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: CupertinoNavigationBarBackButton(
+          color: Colors.black,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -83,76 +78,41 @@ class _TypeOfAppScreenState extends State<TypeOfAppScreen> {
                     align: TextAlign.center,
                   ),
                 ),
-              ],
-            ),
-            Column(
-              children: [
+                verticalSpaceLarge,
                 BoxText.body(
                   'What type of app are you building?',
                   align: TextAlign.center,
                 ),
-                Form(
-                  key: _form,
-                  child: Column(
-                    children: [
-                      CheckboxFormField(
-                        title: Text('Android'),
-                        onSaved: (value) {
-                          _androidOption = value;
+                SizedBox(
+                  height: 250,
+                  child: ListView.builder(
+                    itemCount: loadedServiceType.appType!.length,
+                    itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+                      value: loadedServiceType.appType![i],
+                      child: CheckboxListTile(
+                        value: loadedServiceType.appType![i].isSelected,
+                        title: Text('${loadedServiceType.appType![i].title}'),
+                        onChanged: (value) {
+                          //TODO: Make it clickable and store the value globally
                         },
                       ),
-                      CheckboxFormField(
-                        title: Text('iOS'),
-                        onSaved: (value) {
-                          _iOSOption = value;
-                        },
-                      ),
-                    ],
+                    ),
                   ),
                 ),
+                BoxButton(
+                  title: 'Next',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                      AppCategoryScreen.routeName,
+                      arguments: serviceTypeId,
+                    );
+                  },
+                ),
               ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: BoxButton(
-                title: 'Next',
-                onTap: _saveTypeofApp,
-              ),
             ),
           ],
         ),
       ),
     );
   }
-}
-
-class CheckboxFormField extends FormField<bool> {
-  CheckboxFormField(
-      {Widget? title,
-      FormFieldSetter<bool>? onSaved,
-      FormFieldValidator<bool>? validator,
-      bool initialValue = false,
-      bool autovalidate = false})
-      : super(
-            onSaved: onSaved,
-            validator: validator,
-            initialValue: initialValue,
-            builder: (FormFieldState<bool> state) {
-              return CheckboxListTile(
-                activeColor: kcPrimaryColor,
-                dense: state.hasError,
-                title: title,
-                value: state.value,
-                onChanged: state.didChange,
-                subtitle: state.hasError
-                    ? Builder(
-                        builder: (BuildContext context) => Text(
-                          state.errorText!,
-                          style: TextStyle(color: Theme.of(context).errorColor),
-                        ),
-                      )
-                    : null,
-                controlAffinity: ListTileControlAffinity.leading,
-              );
-            });
 }
