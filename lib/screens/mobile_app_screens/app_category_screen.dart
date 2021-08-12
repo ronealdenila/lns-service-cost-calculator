@@ -45,7 +45,7 @@ class AppCategoryScreen extends StatelessWidget {
             itemCount: categories.length,
             itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
               value: categories[i],
-              child: CategoryTypeItem(),
+              child: CategoryTypeItem(i),
             ),
           ),
         ),
@@ -55,13 +55,16 @@ class AppCategoryScreen extends StatelessWidget {
 }
 
 class CategoryTypeItem extends StatelessWidget {
+  final int index;
+  CategoryTypeItem(
+    this.index,
+  );
   @override
   Widget build(BuildContext context) {
     final categoryItem = Provider.of<Category>(context);
+    final categoryItems = Provider.of<Categories>(context);
     return InkWell(
-      onTap: () {
-        categoryItem.toggleCardSelection();
-      },
+      onTap: () => categoryItems.toggleSingleCardSelection(index),
       child: Card(
         color:
             //set the background color of the button when it is selected/ not selected

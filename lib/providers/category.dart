@@ -15,6 +15,8 @@ class Category with ChangeNotifier {
     this.isSelected = false,
   });
 
+  Set active = {};
+
   void toggleCardSelection() {
     isSelected = !isSelected;
     print(isSelected);
