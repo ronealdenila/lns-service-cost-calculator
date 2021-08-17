@@ -19,59 +19,46 @@ class AppCategoryScreen extends StatelessWidget {
 
     final loadedServiceType = appProvider.findById(serviceTypeId);
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: CupertinoNavigationBarBackButton(
-          color: Colors.black,
-        ),
-      ),
-      body: OptionsLayout(
-        title: 'Which category best describes your App?',
-        subtitle: '(select any one option)',
-        mainButtonTitle: 'Next',
-        onMainButtonTapped: () {
-          Navigator.of(context).pushNamed(
-            DisplayNumberScreen.routeName,
-            arguments: serviceTypeId,
-          );
-        },
-        grid: SizedBox(
-          height: 300,
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemCount: loadedServiceType.appCategory!.length,
-            itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-              value: loadedServiceType.appCategory![i],
-              child: InkWell(
-                onTap: () => appProvider.toggleSingleCardSelection(
-                    i, loadedServiceType.appCategory),
-                child: Consumer<ServiceTypeSubModel>(
-                  builder: (_, bar, __) => Card(
-                    color:
-                        //set the background color of the button when it is selected/ not selected
-                        bar.isSelected ? kcPrimaryColor : Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          loadedServiceType.appCategory![i].icon,
-                          color: bar.isSelected ? Colors.white : Colors.black,
-                        ),
-                        verticalSpaceRegular,
-                        BoxText.caption(
-                          '${loadedServiceType.appCategory![i].title}',
-                          align: TextAlign.center,
-                          color: bar.isSelected ? Colors.white : Colors.black,
-                        ),
-                      ],
-                    ),
+    return OptionsLayout(
+      title: 'Which category best describes your App?',
+      subtitle: '(select any one option)',
+      mainButtonTitle: 'Next',
+      body: SizedBox(
+        height: 300,
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+          ),
+          itemCount: loadedServiceType.appCategory!.length,
+          itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+            value: loadedServiceType.appCategory![i],
+            child: InkWell(
+              onTap: () => appProvider.toggleSingleCardSelection(
+                  i, loadedServiceType.appCategory),
+              child: Consumer<AppTypeModel>(
+                builder: (_, bar, __) => Card(
+                  color:
+                      //set the background color of the button when it is selected/ not selected
+                      bar.isSelected! ? kcSecondaryColor : Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        loadedServiceType.appCategory![i].icon,
+                        color: bar.isSelected! ? Colors.white : Colors.black,
+                      ),
+                      verticalSpaceRegular,
+                      BoxText.caption(
+                        '${loadedServiceType.appCategory![i].title}',
+                        align: TextAlign.center,
+                        color: bar.isSelected! ? Colors.white : Colors.black,
+                      ),
+                    ],
                   ),
                 ),
               ),

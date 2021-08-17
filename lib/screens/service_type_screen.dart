@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lns_service_cost_calculator/constants/app_strings.dart';
 import 'package:lns_service_cost_calculator/providers/lns_api.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/mobile_app_screen.dart';
 import 'package:lns_service_cost_calculator/screens/mobile_app_screens/type_of_app_screen.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
@@ -41,7 +42,7 @@ class ServiceTypeScreen extends StatelessWidget {
                           primary: kcPrimaryColor, padding: EdgeInsets.all(15)),
                       onPressed: () {
                         Navigator.of(context).pushNamed(
-                          TypeOfAppScreen.routeName,
+                          MobileAppScreen.routeName,
                           arguments: appData[i].id,
                         );
                       },

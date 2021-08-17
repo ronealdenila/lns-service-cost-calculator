@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
 import 'package:lns_service_cost_calculator/widgets/box_button.dart';
 import 'package:lns_service_cost_calculator/widgets/box_text.dart';
+import 'package:lns_service_cost_calculator/widgets/custom_dots_indicator.dart';
 
 class OptionsLayout extends StatelessWidget {
   final String? title;
-  final String? subtitle;
   final String? mainButtonTitle;
+  final Widget? body;
+  final String? subtitle;
   final String? validationMessage;
-  final Widget? grid;
-  final void Function()? onMainButtonTapped;
 
   const OptionsLayout({
     Key? key,
-    this.title,
+    required this.title,
+    required this.mainButtonTitle,
+    required this.body,
     this.subtitle,
-    this.mainButtonTitle,
     this.validationMessage,
-    this.grid,
-    this.onMainButtonTapped,
   }) : super(key: key);
 
   @override
@@ -43,12 +42,8 @@ class OptionsLayout extends StatelessWidget {
               color: Colors.red,
             ),
           verticalSpaceRegular,
-          grid!,
+          body!,
           if (validationMessage != null) verticalSpaceRegular,
-          BoxButton(
-            title: mainButtonTitle!,
-            onTap: onMainButtonTapped,
-          )
         ],
       ),
     );

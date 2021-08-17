@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lns_service_cost_calculator/constants/app_strings.dart';
 import 'package:lns_service_cost_calculator/providers/lns_api.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/authentication_type_screen.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/confirmation_screen.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
 import 'package:lns_service_cost_calculator/widgets/box_text.dart';
@@ -18,54 +20,46 @@ class DisplayNumberScreen extends StatelessWidget {
 
     final loadedServiceType = appProvider.findById(serviceTypeId);
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: CupertinoNavigationBarBackButton(
-          color: Colors.black,
-        ),
-      ),
-      body: OptionsLayout(
-        title: NumberOfDisplayScreenTitle,
-        subtitle: 'select any one option',
-        mainButtonTitle: 'Next',
-        onMainButtonTapped: () {},
-        grid: SizedBox(
-          height: 300,
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemCount: loadedServiceType.appScreen!.length,
-            itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-              value: loadedServiceType.appScreen![i],
-              child: InkWell(
-                onTap: () => appProvider.toggleSingleCardSelection(
-                  i,
-                  loadedServiceType.appScreen,
-                ),
-                child: Consumer<DisplayScreenModel>(
-                  builder: (_, bar, __) => Card(
-                    color: bar.isSelected ? kcPrimaryColor : Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          loadedServiceType.appScreen![i].icon,
-                          color: bar.isSelected ? Colors.white : Colors.black,
-                        ),
-                        verticalSpaceRegular,
-                        BoxText.caption(
-                          '${loadedServiceType.appScreen![i].title}',
-                          align: TextAlign.center,
-                          color: bar.isSelected ? Colors.white : Colors.black,
-                        ),
-                      ],
-                    ),
+    return OptionsLayout(
+      title: NumberOfDisplayScreenTitle,
+      subtitle: 'select any one option',
+      mainButtonTitle: 'Next',
+      body: SizedBox(
+        height: 300,
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+          ),
+          itemCount: loadedServiceType.appScreen!.length,
+          itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+            value: loadedServiceType.appScreen![i],
+            child: InkWell(
+              onTap: () => appProvider.toggleSingleCardSelection(
+                i,
+                loadedServiceType.appScreen,
+              ),
+              child: Consumer<DisplayScreenModel>(
+                builder: (_, bar, __) => Card(
+                  color: bar.isSelected ? kcSecondaryColor : Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        loadedServiceType.appScreen![i].icon,
+                        color: bar.isSelected ? Colors.white : Colors.black,
+                      ),
+                      verticalSpaceRegular,
+                      BoxText.caption(
+                        '${loadedServiceType.appScreen![i].title}',
+                        align: TextAlign.center,
+                        color: bar.isSelected ? Colors.white : Colors.black,
+                      ),
+                    ],
                   ),
                 ),
               ),

@@ -9,29 +9,29 @@ final appDummyData = [
     description: 'None',
     price: 200,
     appType: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Android App',
         description: 'Mobile App Efforts',
         icon: Icons.android,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'iOS App',
         description: 'iOS App Effort',
-        icon: Icons.ios_share,
+        icon: Icons.airplay,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'All of the above',
         description: 'Multi-platform Efforts',
         icon: Icons.flutter_dash,
       ),
     ],
     appCategory: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Service app',
         description: 'Service app description',
         icon: Icons.construction,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Booking App',
         description: 'Booking app description',
         icon: Icons.airplanemode_on_outlined,
@@ -45,29 +45,29 @@ final appDummyData = [
     description: 'None',
     price: 200,
     appType: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Android App',
         description: 'Mobile App Efforts',
         icon: Icons.android,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'iOS App',
         description: 'iOS App Effort',
         icon: Icons.ios_share,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'All of the above',
         description: 'Multi-platform Efforts',
         icon: Icons.flutter_dash,
       ),
     ],
     appCategory: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Service app',
         description: 'Service app description',
         icon: Icons.construction,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Booking App',
         description: 'Booking app description',
         icon: Icons.airplanemode_on_outlined,
@@ -81,52 +81,52 @@ final appDummyData = [
     description: 'None',
     price: 200,
     appType: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Android App',
-        description: 'Mobile App Efforts',
+        description: '10 DAYS',
         icon: Icons.android,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'iOS App',
-        description: 'iOS App Effort',
-        icon: Icons.ios_share,
+        description: '15 DAYS',
+        icon: Icons.airplay,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'All of the above',
-        description: 'Multi-platform Efforts',
+        description: '30 DAYS',
         icon: Icons.flutter_dash,
       ),
     ],
     appCategory: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'SERVICE APP',
         description: 'Service app description',
         icon: Icons.construction,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'BOOKING APP',
         description: 'Booking app description',
         icon: Icons.airplanemode_on_outlined,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'SOCIAL NETWORKING APP',
         description: 'social networking description',
-        icon: Icons.airplanemode_on_outlined,
+        icon: Icons.people,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'E-COMMERCE APP',
         description: 'e-commerce description',
-        icon: Icons.airplanemode_on_outlined,
+        icon: Icons.shopping_cart,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'EDUCATION AND E-LEARNING APP',
         description: 'education and e-learning description',
-        icon: Icons.airplanemode_on_outlined,
+        icon: Icons.book,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'BANK APP',
         description: 'Bank app description',
-        icon: Icons.airplanemode_on_outlined,
+        icon: Icons.account_balance,
       ),
     ],
     appScreen: [
@@ -161,6 +161,54 @@ final appDummyData = [
         icon: Icons.file_copy,
       ),
     ],
+    appAuthType: [
+      AuthenticationTypeModel(
+        title: 'EMAIL',
+        description: '2 DAYS',
+        icon: Icons.email,
+      ),
+      AuthenticationTypeModel(
+        title: 'SOCIAL MEDIA',
+        description: '3 DAYS',
+        icon: Icons.groups,
+      ),
+      AuthenticationTypeModel(
+        title: 'PHONE OTP',
+        description: '6 DAYS',
+        icon: Icons.settings_applications,
+      ),
+      AuthenticationTypeModel(
+          title: 'USERS ARE NOT REQUIRED TO LOGIN/REGISTER',
+          description: '0 DAYS',
+          icon: Icons.person_remove),
+    ],
+    appFeatures: [
+      FeaturesModel(
+        title: 'IN APP PAYMENT',
+        description: '2 DAYS',
+        icon: Icons.credit_card,
+      ),
+      FeaturesModel(
+        title: 'MAPS AND GEO-LOCATION',
+        description: '3 DAYS',
+        icon: Icons.map
+      ),
+      FeaturesModel(
+        title: 'PAYMENT GETWAY INTEGRATION',
+        description: '6 DAYS',
+        icon: Icons.payments,
+      ),
+      FeaturesModel(
+        title: 'PUSH NOTIFICATION',
+        description: '7 DAYS',
+        icon: Icons.notifications_active
+      ),
+      FeaturesModel(
+        title: 'MULTI-LANGUAGE',
+        description: '5 DAYS',
+        icon: Icons.translate,
+      ),
+    ],
   ),
   ServiceTypeModel(
     id: 's4',
@@ -169,29 +217,29 @@ final appDummyData = [
     description: 'None',
     price: 200,
     appType: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Android App',
         description: 'Mobile App Efforts',
         icon: Icons.android,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'iOS App',
         description: 'iOS App Effort',
         icon: Icons.ios_share,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'All of the above',
         description: 'Multi-platform Efforts',
         icon: Icons.flutter_dash,
       ),
     ],
     appCategory: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Service app',
         description: 'Service app description',
         icon: Icons.construction,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Booking App',
         description: 'Booking app description',
         icon: Icons.airplanemode_on_outlined,
@@ -205,29 +253,29 @@ final appDummyData = [
     description: 'None',
     price: 200,
     appType: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Android App',
         description: 'Mobile App Efforts',
         icon: Icons.android,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'iOS App',
         description: 'iOS App Effort',
         icon: Icons.ios_share,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'All of the above',
         description: 'Multi-platform Efforts',
         icon: Icons.flutter_dash,
       ),
     ],
     appCategory: [
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Service app',
         description: 'Service app description',
         icon: Icons.construction,
       ),
-      ServiceTypeSubModel(
+      AppTypeModel(
         title: 'Booking App',
         description: 'Booking app description',
         icon: Icons.airplanemode_on_outlined,

@@ -8,9 +8,11 @@ class ServiceTypeModel with ChangeNotifier {
   final String? title;
   final String? description;
   final double? price;
-  final List<ServiceTypeSubModel>? appType;
-  final List<ServiceTypeSubModel>? appCategory;
+  final List<AppTypeModel>? appType;
+  final List<AppTypeModel>? appCategory;
   final List<DisplayScreenModel>? appScreen;
+  final List<AuthenticationTypeModel>? appAuthType;
+  final List<FeaturesModel>? appFeatures;
 
   ServiceTypeModel({
     required this.id,
@@ -21,6 +23,8 @@ class ServiceTypeModel with ChangeNotifier {
     this.appType,
     this.appCategory,
     this.appScreen,
+    this.appAuthType,
+    this.appFeatures,
   });
 }
 
@@ -38,24 +42,46 @@ class DisplayScreenModel with ChangeNotifier {
   });
 }
 
-class ServiceTypeSubModel with ChangeNotifier {
+class AppTypeModel with ChangeNotifier {
   final String? title;
   final String? description;
   final IconData? icon;
-  bool isSelected;
+  bool? isSelected;
 
-  ServiceTypeSubModel({
+  AppTypeModel({
     required this.title,
     required this.description,
     required this.icon,
     this.isSelected = false,
   });
+}
 
-  void toggleSelection(bool value) {
-    isSelected = value;
-    print(isSelected);
-    notifyListeners();
-  }
+class AuthenticationTypeModel with ChangeNotifier {
+  final String? title;
+  final String? description;
+  final IconData? icon;
+  bool? isSelected;
+
+  AuthenticationTypeModel({
+    required this.title,
+    required this.description,
+    required this.icon,
+    this.isSelected = false,
+  });
+}
+
+class FeaturesModel with ChangeNotifier {
+  final String? title;
+  final String? description;
+  final IconData? icon;
+  bool? isSelected;
+
+  FeaturesModel({
+    required this.title,
+    required this.description,
+    required this.icon,
+    this.isSelected = false,
+  });
 }
 
 class AppProvider with ChangeNotifier {
@@ -78,6 +104,20 @@ class AppProvider with ChangeNotifier {
         items[indexBtn].isSelected = false;
       }
     }
+    notifyListeners();
+  }
+
+  void toggleMultipleCardSelection(dynamic items, int index) {
+    items.isSelected = !items.isSelected!;
+    print(index);
+    if (index == 3) {
+      print('Must unselected the previous index');
+    }
+    notifyListeners();
+  }
+
+  void toggleCheckBox(bool value, AppTypeModel items, int index) {
+    items.isSelected = value;
     notifyListeners();
   }
 }

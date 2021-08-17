@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lns_service_cost_calculator/providers/lns_api.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/authentication_type_screen.dart';
 import 'package:lns_service_cost_calculator/screens/mobile_app_screens/display_number_screen.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/mobile_app_screen.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_screens/result_screen.dart';
 
 import './providers/auth.dart';
 
@@ -61,17 +64,21 @@ class MyApp extends StatelessWidget {
             }
             if (userSnapshot.hasData) {
               return ServiceTypeScreen();
+            } else {
+              return OnBoardingScreen();
             }
-            return OnBoardingScreen();
           },
         ),
         routes: {
           ServiceTypeScreen.routeName: (ctx) => ServiceTypeScreen(),
           TypeOfAppScreen.routeName: (ctx) => TypeOfAppScreen(),
+          MobileAppScreen.routeName: (ctx) => MobileAppScreen(),
           AppCategoryScreen.routeName: (ctx) => AppCategoryScreen(),
           DisplayNumberScreen.routeName: (ctx) => DisplayNumberScreen(),
+          AuthenticationTypeScreen.routeName: (ctx) => AuthenticationTypeScreen(),
           FeaturesScreen.routeName: (ctx) => FeaturesScreen(),
           ConfirmationScreen.routeName: (ctx) => ConfirmationScreen(),
+          ResultScreen.routeName: (ctx) => ResultScreen(),
         },
       ),
     );

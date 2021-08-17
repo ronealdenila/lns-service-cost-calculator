@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
+import 'package:lns_service_cost_calculator/shared/app_colors.dart';
+import 'package:lns_service_cost_calculator/widgets/custom_dots_indicator.dart';
 import 'package:provider/provider.dart';
+
+import 'package:dots_indicator/dots_indicator.dart';
 
 import '/providers/lns_api.dart';
 
@@ -45,73 +49,62 @@ class TypeOfAppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final serviceTypeId = ModalRoute.of(context)!.settings.arguments as String;
-    final loadedServiceType =
-        context.read<AppProvider>().findById(serviceTypeId);
+    final appProvider = Provider.of<AppProvider>(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: CupertinoNavigationBarBackButton(
-          color: Colors.black,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              children: [
-                BoxText.headingThree(
-                  'YOU HAVE CHOOSEN',
+    final loadedServiceType = appProvider.findById(serviceTypeId);
+
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            children: [
+              BoxText.headingThree(
+                'YOU HAVE CHOOSEN',
+                align: TextAlign.center,
+              ),
+              verticalSpaceMedium,
+              BoxText.headline(
+                loadedServiceType.title!,
+                align: TextAlign.center,
+              ),
+              verticalSpaceRegular,
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: BoxText.caption(
+                  MobileAppCategoryDescription,
                   align: TextAlign.center,
                 ),
-                verticalSpaceMedium,
-                BoxText.headline(
-                  loadedServiceType.title!,
-                  align: TextAlign.center,
-                ),
-                verticalSpaceRegular,
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: BoxText.caption(
-                    MobileAppCategoryDescription,
-                    align: TextAlign.center,
-                  ),
-                ),
-                verticalSpaceLarge,
-                BoxText.body(
-                  'What type of app are you building?',
-                  align: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 250,
-                  child: ListView.builder(
-                    itemCount: loadedServiceType.appType!.length,
-                    itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-                      value: loadedServiceType.appType![i],
-                      child: CheckboxListTile(
-                        value: loadedServiceType.appType![i].isSelected,
-                        title: Text('${loadedServiceType.appType![i].title}'),
+              ),
+              verticalSpaceLarge,
+              BoxText.body(
+                'What type of app are you building?',
+                align: TextAlign.center,
+              ),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  itemCount: loadedServiceType.appType!.length,
+                  itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
+                    value: loadedServiceType.appType![index],
+                    child: Consumer<AppTypeModel>(
+                      builder: (_, bar, __) => CheckboxListTile(
+                        value: bar.isSelected,
+                        title:
+                            Text('${loadedServiceType.appType![index].title}'),
                         onChanged: (value) {
-                          //TODO: Make it clickable and store the value globally
+                          appProvider.toggleCheckBox(value!, bar, index);
                         },
+                        activeColor: kcSecondaryColor,
                       ),
                     ),
                   ),
                 ),
-                BoxButton(
-                  title: 'Next',
-                  onTap: () {
-                    Navigator.of(context).pushNamed(
-                      AppCategoryScreen.routeName,
-                      arguments: serviceTypeId,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
