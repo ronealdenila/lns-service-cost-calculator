@@ -20,11 +20,11 @@ class ServiceTypeModel with ChangeNotifier {
     required this.title,
     required this.description,
     required this.price,
-    this.appType,
-    this.appCategory,
-    this.appScreen,
-    this.appAuthType,
-    this.appFeatures,
+    required this.appType,
+    required this.appCategory,
+    required this.appScreen,
+    required this.appAuthType,
+    required this.appFeatures,
   });
 }
 
@@ -105,6 +105,10 @@ class AppProvider with ChangeNotifier {
       }
     }
     notifyListeners();
+  }
+
+  void checkToggleCheckBox() {
+    print(_items.contains('appType'));
   }
 
   void toggleMultipleCardSelection(dynamic items, int index) {

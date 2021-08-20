@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
-import 'package:lns_service_cost_calculator/widgets/custom_dots_indicator.dart';
 import 'package:provider/provider.dart';
-
-import 'package:dots_indicator/dots_indicator.dart';
 
 import '/providers/lns_api.dart';
 
@@ -13,13 +9,10 @@ import '/shared/ui_helpers.dart';
 
 import '/constants/app_strings.dart';
 
-import '/widgets/box_button.dart';
 import '/widgets/box_text.dart';
 
-class TypeOfAppScreen extends StatelessWidget {
+class TypeOfAppPage extends StatelessWidget {
   static const routeName = '/type-of-app-option';
-
-  final _form = GlobalKey<FormState>();
 
   // Future<void> _saveTypeofApp() async {
   //   _form.currentState!.save();

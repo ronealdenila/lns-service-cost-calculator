@@ -9,10 +9,10 @@ import 'package:lns_service_cost_calculator/providers/lns_api.dart';
 
 import 'package:provider/provider.dart';
 
-class AuthenticationTypeScreen extends StatelessWidget {
+class AuthenticationTypePage extends StatelessWidget {
   static const routeName = 'authentication-type-option';
 
-  const AuthenticationTypeScreen({Key? key}) : super(key: key);
+  const AuthenticationTypePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

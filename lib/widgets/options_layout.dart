@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
-import 'package:lns_service_cost_calculator/widgets/box_button.dart';
 import 'package:lns_service_cost_calculator/widgets/box_text.dart';
-import 'package:lns_service_cost_calculator/widgets/custom_dots_indicator.dart';
 
 class OptionsLayout extends StatelessWidget {
   final String? title;

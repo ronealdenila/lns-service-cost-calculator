@@ -1,17 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/constants/app_strings.dart';
 import 'package:lns_service_cost_calculator/providers/lns_api.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/authentication_type_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/confirmation_screen.dart';
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/shared/ui_helpers.dart';
 import 'package:lns_service_cost_calculator/widgets/box_text.dart';
 import 'package:lns_service_cost_calculator/widgets/options_layout.dart';
 import 'package:provider/provider.dart';
 
-class DisplayNumberScreen extends StatelessWidget {
-  static const routeName = '/display-number-option';
+class FeaturesPage extends StatelessWidget {
+  static const routeName = '/features-option';
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +18,9 @@ class DisplayNumberScreen extends StatelessWidget {
     final loadedServiceType = appProvider.findById(serviceTypeId);
 
     return OptionsLayout(
-      title: NumberOfDisplayScreenTitle,
-      subtitle: 'select any one option',
+      title:
+          'Which features/functionalities do you want to include in your app?',
+      subtitle: '(select atleast one opton)',
       mainButtonTitle: 'Next',
       body: SizedBox(
         height: 300,
@@ -32,17 +30,16 @@ class DisplayNumberScreen extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
           ),
-          itemCount: loadedServiceType.appScreen!.length,
+          itemCount: loadedServiceType.appFeatures!.length,
           itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-            value: loadedServiceType.appScreen![i],
-            child: InkWell(
-              onTap: () => appProvider.toggleSingleCardSelection(
-                i,
-                loadedServiceType.appScreen,
-              ),
-              child: Consumer<DisplayScreenModel>(
-                builder: (_, bar, __) => Card(
-                  color: bar.isSelected ? kcSecondaryColor : Colors.white,
+            value: loadedServiceType.appFeatures![i],
+            child: Consumer<FeaturesModel>(
+              builder: (_, bar, __) => InkWell(
+                onTap: () => appProvider.toggleMultipleCardSelection(bar, i),
+                child: Card(
+                  color:
+                      //set the background color of the button when it is selected/ not selected
+                      bar.isSelected! ? kcSecondaryColor : Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -50,14 +47,14 @@ class DisplayNumberScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        loadedServiceType.appScreen![i].icon,
-                        color: bar.isSelected ? Colors.white : Colors.black,
+                        loadedServiceType.appFeatures![i].icon,
+                        color: bar.isSelected! ? Colors.white : Colors.black,
                       ),
                       verticalSpaceRegular,
                       BoxText.caption(
-                        '${loadedServiceType.appScreen![i].title}',
+                        '${loadedServiceType.appFeatures![i].title}',
                         align: TextAlign.center,
-                        color: bar.isSelected ? Colors.white : Colors.black,
+                        color: bar.isSelected! ? Colors.white : Colors.black,
                       ),
                     ],
                   ),

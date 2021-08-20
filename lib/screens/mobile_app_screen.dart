@@ -1,15 +1,19 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/app_category_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/authentication_type_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/confirmation_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/display_number_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/features_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/result_screen.dart';
-import 'package:lns_service_cost_calculator/screens/mobile_app_screens/type_of_app_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'package:lns_service_cost_calculator/providers/lns_api.dart';
+import 'package:lns_service_cost_calculator/screens/mobile_app_pages/type_of_app_screen.dart';
+
 import 'package:lns_service_cost_calculator/shared/app_colors.dart';
 import 'package:lns_service_cost_calculator/widgets/box_button.dart';
+
+import 'mobile_app_pages/app_category_screen.dart';
+import 'mobile_app_pages/authentication_type_screen.dart';
+import 'confirmation_screen.dart';
+import 'mobile_app_pages/display_number_screen.dart';
+import 'mobile_app_pages/features_screen.dart';
 
 class MobileAppScreen extends StatefulWidget {
   static const routeName = 'mobile-app-option';
@@ -24,29 +28,58 @@ class _MobileAppScreenState extends State<MobileAppScreen> {
   bool? isLastPage = false;
   final _pageController = PageController(initialPage: 0);
 
+  void onNextPage() {
+    _pageController.nextPage(
+        duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+    setState(() {
+      _currentIndex = _pageController.page!.round() + 1;
+    });
+  }
+
+  //TODO: Method for checking if the user choosen card/checkbox is null
   void nextPage() {
-    // checkifLastPage(_currentIndex!);
-    if (_currentIndex! < 5) {
-      isLastPage = false;
-      _pageController.nextPage(
-          duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-      setState(() {
-        _currentIndex = _pageController.page!.round() + 1;
-        print(_currentIndex);
-      });
-    } else {
-      Navigator.of(context).pushNamed(ResultScreen.routeName);
+    switch (_currentIndex) {
+      case 0:
+        print('Function for checking type of app checkbox');
+        onNextPage();
+        break;
+      case 1:
+        print('Function for checking if there is category card selected');
+        onNextPage();
+        break;
+      case 2:
+        print('Function for checking if there is screen card selected');
+        onNextPage();
+        break;
+      case 3:
+        print(
+            'Function for checking if there is type of authentication card selected');
+        onNextPage();
+        break;
+      case 4:
+        print('Function for checking if there is feauture card selected');
+        Navigator.of(context).pushNamed(ConfirmationPage.routeName);
+        break;
+      default:
     }
+  }
+
+  void checkBoxValidation() {
+    final appProvider = Provider.of<AppProvider>(context, listen: false);
+    final loadedServiceType = appProvider.findById('s1');
+    print(loadedServiceType.appType);
   }
 
   void checkifLastPage(int currentIndex) {
     if (currentIndex == 4) {
       setState(() {
         isLastPage = true;
+        print('isLastPage? $isLastPage');
       });
     } else {
       setState(() {
         isLastPage = false;
+        print('isLastPage? $isLastPage');
       });
     }
   }
@@ -62,6 +95,17 @@ class _MobileAppScreenState extends State<MobileAppScreen> {
         print(_currentIndex);
       });
     }
+  }
+
+  _onPageViewChange(int page) {
+    print("Current Page: " + page.toString());
+    int previousPage = page;
+    if (page != 0)
+      previousPage--;
+    else
+      previousPage = 2;
+    print("Previous page: $previousPage");
+    checkifLastPage(page);
   }
 
   @override
@@ -80,14 +124,15 @@ class _MobileAppScreenState extends State<MobileAppScreen> {
               height: MediaQuery.of(context).size.height * .6,
               child: PageView(
                 controller: _pageController,
+                onPageChanged: _onPageViewChange,
                 physics: new NeverScrollableScrollPhysics(),
                 children: [
-                  TypeOfAppScreen(),
-                  AppCategoryScreen(),
-                  DisplayNumberScreen(),
-                  AuthenticationTypeScreen(),
-                  FeaturesScreen(),
-                  ConfirmationScreen(),
+                  TypeOfAppPage(),
+                  AppCategoryPage(),
+                  DisplayNumberPage(),
+                  AuthenticationTypePage(),
+                  FeaturesPage(),
+                  // ConfirmationPage(),
                 ],
               ),
             ),
@@ -98,7 +143,7 @@ class _MobileAppScreenState extends State<MobileAppScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   DotsIndicator(
-                    dotsCount: 6,
+                    dotsCount: 5,
                     decorator: DotsDecorator(
                       spacing: EdgeInsets.all(10),
                       color: kcPrimaryShadeColor,
@@ -108,11 +153,10 @@ class _MobileAppScreenState extends State<MobileAppScreen> {
                       activeShape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0)),
                     ),
-                    //TODO: MUST STOP ON LAST INDEX
                     position: _currentIndex!.toDouble(),
                   ),
                   BoxButton(
-                      title: isLastPage! ? 'PROCEED' : 'NEXT', onTap: nextPage)
+                      title: isLastPage! ? 'PROCEED' : 'NEXT', onTap: nextPage),
                 ],
               ),
             )
